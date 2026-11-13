@@ -1,0 +1,54 @@
+{
+  "source_rows": 1499,
+  "clean_rows": 1103,
+  "duplicate_rows_after_ignoring_exported_index": 394,
+  "extreme_target_rows_over_500_lakhs": 3,
+  "removed_rows_total": 396,
+  "feature_columns": [
+    "insurance_validity",
+    "fuel_type",
+    "ownsership",
+    "transmission",
+    "kms_driven",
+    "seats",
+    "manufacturing_year",
+    "mileage(kmpl)",
+    "engine(cc)",
+    "max_power(bhp)",
+    "torque(Nm)"
+  ],
+  "target": "price(in lakhs)",
+  "selected_model_by_5fold_cv_mae": "Random Forest",
+  "models": {
+    "Random Forest": {
+      "cv_mae_mean": 4.133469664872184,
+      "cv_rmse_mean": 9.468178475839627,
+      "cv_r2_mean": 0.6922307444501716,
+      "test_mae": 4.302533251695515,
+      "test_rmse": 10.516862352340473,
+      "test_r2": 0.5907599603286755
+    },
+    "Extra Trees": {
+      "cv_mae_mean": 4.18368511347552,
+      "cv_rmse_mean": 9.261950249841906,
+      "cv_r2_mean": 0.7068163377128934,
+      "test_mae": 4.516602668049702,
+      "test_rmse": 10.522280975470153,
+      "test_r2": 0.5903381446315314
+    },
+    "HistGradientBoosting": {
+      "cv_mae_mean": 4.597111695413532,
+      "cv_rmse_mean": 9.618915526692756,
+      "cv_r2_mean": 0.687172741982432,
+      "test_mae": 4.768277784377247,
+      "test_rmse": 10.284203549585346,
+      "test_r2": 0.6086664648772273
+    }
+  },
+  "data_quality_notes": [
+    "Insurance validity is treated as a categorical feature; no ownership labels are mapped into it.",
+    "OneHotEncoder handles categories without imposing fake numeric order.",
+    "Implausible vehicle measurements are set missing and imputed inside the training pipeline.",
+    "Target prices above 500 lakhs are excluded as likely unit/data-entry errors and should be manually checked."
+  ]
+}
